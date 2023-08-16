@@ -3,8 +3,6 @@ name: Workflow
 on:
   push:
     branches: [ "main", "dev" ]
-  pull_request:
-    branches: [ "main", "dev" ]
 
 jobs:
   build:
@@ -45,15 +43,11 @@ jobs:
     needs: image
     runs-on: ubuntu-latest
     steps:
-      - name: Set branch name
-        id: vars
-        run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
-
       - name: Checkout k8s repository
         uses: actions/checkout@v3
         with:
           repository: victormilk/walterbob-k8s
-          ref: ${{ steps.vars.outputs.branch }}
+          ref: ${{ github.ref }}
           token: ${{ secrets.PAT }}
 
       - name: Update tag
