@@ -52,7 +52,7 @@ jobs:
 
       - name: Update tag
         run: |
-          sed -i "s|victormilk/walterbob:latest|victormilk/walterbob:${{ github.sha }}|g" kustomization.yaml
+          sed -i "s|newTag:.*|newTag: ${{ github.sha }}|g" kustomization.yaml
 
       - name: Commit and push changes
         run: |
