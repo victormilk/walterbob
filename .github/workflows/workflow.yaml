@@ -2,9 +2,7 @@ name: Workflow
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "dev" ]
 
 jobs:
   build:
@@ -48,7 +46,8 @@ jobs:
       - name: Checkout k8s repository
         uses: actions/checkout@v3
         with:
-          repository: victormilk/dev-k8s
+          repository: victormilk/walterbob-k8s
+          ref: ${{ github.ref }}
           token: ${{ secrets.PAT }}
 
       - name: Update tag
