@@ -10,7 +10,7 @@ class WorkController {
 
     @GetMapping
     suspend fun getWorks(): String {
-        println("Chamou")
+        println("Chamouu")
         return "dev -> works"
     }
 }
